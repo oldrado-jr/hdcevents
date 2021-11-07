@@ -206,11 +206,11 @@ class EventController extends Controller
      */
     private function setData(Request $request, Event $event)
     {
-        $event->title = Str::of(strip_tags($request->title))->trim();
-        $event->city = Str::of(strip_tags($request->city))->trim();
+        $event->title = $request->title;
+        $event->city = $request->city;
         $event->date = $request->date;
         $event->private = $request->boolean('private', $request->private);
-        $event->description = Str::of(strip_tags($request->description))->trim();
+        $event->description = $request->description;
 
         if (!$request->isNotFilled('items')) {
             $event->items = $request->items;
